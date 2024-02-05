@@ -1,0 +1,28 @@
+server:
+  port: 9005
+camunda:
+  bpm:
+    client:
+      base-url: http://localhost:8080/engine-rest # the URL pointing to the Camunda Platform Runtime REST API
+  #max-tasks: 1
+  #lock-duration: 20000 # defines how many milliseconds the External Tasks are locked until they can be fetched again
+  #test01
+  lock-duration: 3000
+  #lock-duration: 1000 #the max locking time is 1 s, but, the worker needs 5 seconds for each task, that will cause locking problem
+  worker-id: spring-boot-client
+
+logging:
+  level:
+    org:
+      camunda:
+        bpm:
+          client: DEBUG # increase the log level of the application
+
+app:
+  camunda:
+    var-key:
+      winning-number: winningNumber
+      lotto-number: lottoNumber
+      customer: customer
+    topic:
+      check-winning: checkWinning
